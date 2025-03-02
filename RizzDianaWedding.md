@@ -125,3 +125,34 @@
     </script>
 </body>
 </html>
+<!-- Pemain Muzik Selawat -->
+<audio id="selawatAudio" autoplay loop>
+    <source src="LINK_AUDIO_SELAWAT.mp3" type="audio/mpeg">
+    Browser anda tidak menyokong audio.
+</audio>
+
+<!-- Butang Kawalan Muzik -->
+<button id="musicButton" onclick="toggleMusic()">🔊 Mainkan Selawat</button>
+
+<script>
+    let audio = document.getElementById("selawatAudio");
+    let musicButton = document.getElementById("musicButton");
+
+    // Mulakan dengan volume rendah untuk elak sekatan
+    window.addEventListener('load', function() {
+        audio.volume = 0.5; // Tetapkan volume awal
+        audio.play().catch(() => {
+            console.log("Autoplay disekat, perlu interaksi pengguna.");
+        });
+    });
+
+    function toggleMusic() {
+        if (audio.paused) {
+            audio.play();
+            musicButton.innerHTML = "⏸ Hentikan Selawat";
+        } else {
+            audio.pause();
+            musicButton.innerHTML = "🔊 Mainkan Selawat";
+        }
+    }
+</script>
